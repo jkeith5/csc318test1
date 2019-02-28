@@ -9,6 +9,7 @@ public class Main {
         double random1,random2=0;
         System.out.println("-------Ice Cream Problem--------");
         for (int year=1;year<11;year++){
+            System.out.println("Year: " + year);
             for (int i=1; i<53;i++){
                 random1=Math.random();//determines Demand
                 random2=Math.random();//determines amount received from warehouse
