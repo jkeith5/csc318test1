@@ -7,6 +7,7 @@ public class Main {
         IcecreamStore mothers = new IcecreamStore(0);// order strat 50, 60, 60, 50
         IcecreamStore personal = new IcecreamStore(1);
         double random1,random2=0;
+        System.out.println("-------Ice Cream Problem--------");
         for (int year=1;year<11;year++){
             for (int i=1; i<53;i++){
                 random1=Math.random();//determines Demand
@@ -33,15 +34,14 @@ public class Main {
                     personal.gallonsReceived(random2);
                 }//end of if else
 
+                System.out.println("Original Ordering Plan:");
+                System.out.printf("Average Profit: %.2f \t\t\t Variance in Profit: %.2f \t\t\t Std. Deviation: %.5f\n",
+                        mothers.averageProfit(),mothers.varianceProfit(),mothers.stdDevProfit());
+                System.out.println("My Ordering Plan(60,65,70,80 by Quarter):");
+                System.out.printf("Average Profit: %.2f \t\t\t Variance in Profit: %.2f \t\t\t Std. Deviation: %.5f\n\n",
+                        personal.averageProfit(),personal.varianceProfit(),personal.stdDevProfit());
             }
         }
-        System.out.println("-------Ice Cream Problem--------");
-        System.out.println("Original Ordering Plan:");
-        System.out.printf("Average Profit: %.2f \t\t\t Variance in Profit: %.2f \t\t\t Std. Deviation: %.5f\n",
-                mothers.averageProfit(),mothers.varianceProfit(),mothers.stdDevProfit());
-        System.out.println("My Ordering Plan(60,65,70,80 by Quarter):");
-        System.out.printf("Average Profit: %.2f \t\t\t Variance in Profit: %.2f \t\t\t Std. Deviation: %.5f\n",
-                personal.averageProfit(),personal.varianceProfit(),personal.stdDevProfit());
     }
 }
 class IcecreamStore{
@@ -156,10 +156,10 @@ class IcecreamStore{
     public double varianceProfit(){
         double variance=0;
         double temp=0;
-        for (int i =0; i <520;i++){
+        for (int i =0; i <this.iceCreamData.size();i++){
             temp+= Math.pow(this.iceCreamData.get(i)-averageProfit(),2);
         }
-        variance=temp/51900;
+        variance=temp/(this.iceCreamData.size()*10);
         return variance;
     }
 
@@ -170,10 +170,10 @@ class IcecreamStore{
     public double averageProfit(){
         double average=0;
         double temp=0;
-        for (int i=0;i<520;i++){
+        for (int i=0;i<this.iceCreamData.size();i++){
             temp+=this.iceCreamData.get(i);
         }
-        average=temp/520;
+        average=temp/this.iceCreamData.size();
         return average;
     }
 
