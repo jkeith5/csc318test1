@@ -49,7 +49,7 @@ class IcecreamStore{
     protected int amtinStock;
     protected int type;
     protected double profit;
-    protected double money;
+
     protected int ordered;
     protected int demand;
 
@@ -75,7 +75,7 @@ class IcecreamStore{
         this.type = type;
     }
 
-    public void setMoney(int type){ this.money=350; }
+
 
     public ArrayList<Double> getIceCreamData() {
         return iceCreamData;
@@ -85,13 +85,13 @@ class IcecreamStore{
         double amountSold=0;
         if (this.demand>=this.amtinStock){//if demand is higher or equal to amt instock
             amountSold=this.amtinStock;
-            money+= (amountSold*17);
+
             profit+= (amountSold*10);
             iceCreamData.add((amountSold*10));
             this.amtinStock=0;
         } else{//demand is lower
             amountSold=this.demand;
-            money+= (amountSold*17);
+
             profit+= (amountSold*10);
             iceCreamData.add((amountSold*10));
             this.amtinStock=0;
@@ -105,13 +105,13 @@ class IcecreamStore{
             else if (quarter==1) ordered=60;
             else if (quarter==2) ordered=60;
             else ordered=50;
-            money-= (ordered*7);
+
         } else {// my order strategy
             if (quarter==0) ordered=60;
             else if (quarter==1) ordered=65;
             else if (quarter==2) ordered=70;
             else ordered=80;
-            money-= (ordered*7);
+
         }
         this.ordered=ordered;
     }
